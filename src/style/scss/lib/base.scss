@@ -20,15 +20,7 @@ h1 {
 	@include margin();
 	@include relative();
 	@include italic();
-
-	&:before {
-		@include absolute();
-		@include italic();
-		top: 4px;
-		left: 4px;
-		content: attr(data-header);
-		font-weight: 100;
-	}
+        font-weight: 100;
 }
 
 h2 {

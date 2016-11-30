@@ -1,31 +1,3 @@
-@font-face {
-	font-family: 'Bourbon';
-	src: url('fonts/Bourbon-Regular-webfont.ttf') format('truetype');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'Bourbon';
-	src: url('fonts/Bourbon-RegularOblique-webfont.ttf') format('truetype');
-	font-weight: normal;
-	font-style: italic;
-}
-
-@font-face {
-	font-family: 'Bourbon';
-	src: url('fonts/Bourbon-Lines-webfont.ttf') format('truetype');
-	font-weight: 100;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'Bourbon';
-	src: url('fonts/Bourbon-LinesOblique-webfont.ttf') format('truetype');
-	font-weight: 100;
-	font-style: italic;
-}
-
 
 @mixin font-heading($size: $font-size-normal) {
 	font-family: $font-heading;

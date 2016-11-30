@@ -1,0 +1,146 @@
+
+// Border Radius
+@mixin border-radius($n: 1) {
+	@if $n > 0 {
+		border-radius: ($base-number * $n);
+	}
+	@else {
+		border-radius: 0;
+	}
+}
+
+@mixin round {
+	border-radius: 50%;
+}
+
+@mixin border-radius-left($n: 1) {
+	border-radius: ($base-number * $n) 0 0 ($base-number * $n);
+}
+
+@mixin border-radius-right($n: 1) {
+	border-radius: 0 ($base-number * $n) ($base-number * $n) 0;
+}
+
+@mixin drop-shadow($size: 1, $distance: 0, $color: rgba(0,0,0,0.25), $x: 0) {
+	box-shadow: $x ($distance * $base-number) ($base-number * $size) $color;
+}
+
+
+@mixin opacity($opacity: 0.5) {
+	opacity: $opacity;
+}
+
+@mixin text-shadow() {
+	text-shadow: 1px 2px 3px rgba(0,0,0, 0.25);
+}
+
+
+.three-d-base {
+	-webkit-transform-style: preserve-3d;
+	-webkit-perspective: 1000;
+	transform-style: preserve-3d;
+	perspective: 1000;
+}
+
+@mixin transform($rules) {
+	-webkit-transform: $rules;
+	-moz-transform: $rules;
+	transform: $rules;
+}
+
+@mixin animate($n: 1) {
+	transition: all ($animation-time * $n) $animation-easing;
+}
+
+@mixin animate-bounce($n: 1) {
+	transition: all ($animation-time * $n) cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@mixin animate-delay($n: 1) {
+	transition-delay: ($n * .5s);
+}
+
+// .keyframes($name; $arguments) {
+// 	@-webkit-keyframes @name { $arguments(); }
+// 	@keyframes @name { $arguments(); }
+// }
+
+
+
+// @mixin spinning(@n: 1) {
+// 	.keyframes(spinning, {
+// 		from {.transform(rotateZ(0deg)); }
+// 		to   {.transform(rotateZ(360deg)); }
+// 	});
+// 	animation: spinning (@animation-time * @n) linear 0s infinite;
+// }
+
+@mixin circlify($n) {
+	-webkit-clip-path: circle($n at center);
+	-moz-clip-path: circle($n at center);
+	-o-clip-path: circle($n at center);
+	-ms-clip-path: circle($n at center);
+	clip-path: circle($n at center);
+}
+
+@mixin triangle($dir, $size, $color) {
+	@if $dir == 'up' {
+		&:before {
+			content: '';
+			position: absolute;
+			width: $size;
+			height: $size;
+			top: ($size * -2);
+			left: 25%;
+			border-top: $size transparent solid;
+			border-right: $size transparent solid;
+			border-bottom: $size $color solid;
+			border-left: $size transparent solid;
+		}
+	}
+}
+
+
+// JS FX
+.stickify {
+	position: fixed;
+	z-index: 1000;
+}
+
+
+.show-on-scroll {
+	&.bottom {
+		@include fixed();
+		@include animate();
+		@include z(2000);
+		width:100%;
+		bottom:-4em;
+		left:0;
+
+		&.active {
+			bottom:0;
+		}
+	}
+}
+
+
+.slide-from-top {
+	@include animate-bounce(2);
+	@include absolute;
+	@include transform(translateY(-100%));
+
+	&.active {
+		@include transform(translateY(0));
+	}
+}
+
+
+.slide-from-bottom {
+	@include animate-bounce(2);
+	@include absolute;
+	@include transform(translateY(100%));
+
+	&.active {
+		@include transform(translateY(0));
+	}
+}

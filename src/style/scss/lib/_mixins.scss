@@ -1,0 +1,181 @@
+// FUNCTIONS
+// ---------------------------
+
+
+// Margins
+@mixin margin($n: 0) {
+	margin: $base-number * $n;
+};
+
+@mixin margin($n:0, $n2:0) {
+	margin: ($base-number * $n) ($base-number * $n2);
+};
+
+
+@mixin hmargin($n: 1) {
+	@include margin(0, $n);
+};
+
+@mixin vmargin($n: 1) {
+	@include margin($n, 0);
+}
+
+@mixin margin-top($n: 1) {
+	margin-top: ($base-number * $n);
+}
+
+@mixin margin-right($n: 1) {
+	margin-right: ($base-number * $n);
+}
+
+@mixin margin-left($n: 1) {
+	margin-left: ($base-number * $n);
+}
+
+@mixin margin-bottom($n: 1) {
+	margin-bottom: ($base-number * $n);
+}
+
+
+
+// Paddings
+@mixin padding($n: 0) {
+	padding: ($base-number * $n);
+};
+
+@mixin padding($n:0, $n2:0) {
+	padding: ($base-number * $n) ($base-number * $n2);
+};
+
+@mixin hpadding($n: 1) {
+	@include padding(0, $n);
+};
+
+@mixin vpadding($n: 1) {
+	@include padding($n, 0);
+};
+
+@mixin padding-top($n: 1) {
+	padding-top: ($base-number * $n);
+}
+
+@mixin padding-right($n: 1) {
+	padding-right: ($base-number * $n);
+}
+
+@mixin padding-left($n: 1) {
+	padding-left: ($base-number * $n);
+}
+
+@mixin padding-bottom($n: 1) {
+	padding-bottom: ($base-number * $n);
+}
+
+
+
+// Border
+@mixin border-reset() {
+	border:0;
+}
+
+@mixin border-radius($n: 5px) {
+	border-radius: $n;
+}
+
+@mixin border($color: $theme-color1, $radius: 0, $border-size: 1) {
+	border: ($border-size-default * $border-size) solid $color;
+	@include border-radius($radius);
+}
+
+@mixin border-top($color: $theme-color1) {
+	border-top: $border-size-default solid $color;
+}
+
+@mixin border-bottom($color: $theme-color1) {
+	border-bottom: $border-size-default solid $color;
+}
+
+@mixin border-left($color: $theme-color1) {
+	border-left: $border-size-default solid $color;
+}
+
+@mixin border-right($color: $theme-color1) {
+	border-right: $border-size-default solid $color;
+}
+
+
+@mixin background-img($img, $bgcolor: transparent) {
+	background-image: url("${url-root}/${img}");
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	background-color: $bgcolor;
+}
+
+
+
+// Blocks
+@mixin block() {
+	display: block;
+}
+
+@mixin block-important() {
+	display: block !important;
+}
+
+@mixin inline-block($alignment: top) {
+	display: inline-block;
+	vertical-align: $alignment;
+}
+
+@mixin inline() {
+	display: inline;
+}
+
+
+@mixin relative() {
+	position: relative;
+}
+
+@mixin absolute() {
+	position: absolute;
+}
+
+@mixin fixed() {
+	position: fixed;
+}
+
+
+// Positioning
+@mixin center() {
+	@include block();
+	margin-left: auto;
+	margin-right: auto;
+}
+
+@mixin centerize() {
+	width: 90%;
+	max-width: ($response-size-desktop);
+	@include center();
+}
+
+@mixin text-center() {
+	text-align: center;
+}
+
+
+@mixin z($n) {
+	z-index: $n;
+}
+
+// Disappearing
+.hide, .hidden {
+	display:none !important;
+}
+
+
+
+// TODO: REMOVE ME WHEN ICONS WORK
+@mixin icon($bitch: 0) {
+
+}
+

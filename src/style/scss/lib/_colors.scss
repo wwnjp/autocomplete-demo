@@ -1,0 +1,57 @@
+
+
+@mixin color($c) {
+	color: $c;
+}
+
+@mixin color-lighten($color, $contrast: 1) {
+	@include color(lighten($color, ($color-change-contrast * $contrast)));
+}
+
+@mixin color-darken($color, $contrast: 1) {
+	@include color(darken($color, ($color-change-contrast * $contrast)));
+}
+
+
+@mixin text-white() {
+	@include color($white);
+
+	a {
+		@include color($white);
+
+		&:hover, &:focus {
+			@include color($white);
+		}
+	}
+
+}
+
+
+// Colors
+@mixin bg-color($c) {
+	@if $c == $white {
+		background: $c;
+		@include color($black);
+	}
+	@elseif lightness($c) >= 65% {
+		background: $c;
+		@include color($black);
+	}
+
+	@else {
+		background: $c;
+		@include text-white();
+	}
+}
+
+
+@mixin bg-color-gradient($c, $c2: darken($c, $color-change-contrast)) {
+	$c1: $c;
+	background-color: $c;
+	background: linear-gradient(top, $c1, $c2);
+	background: -moz-linear-gradient(top, $c1, $c2);
+	background: -webkit-linear-gradient(top, $c1, $c2);
+	background: -o-linear-gradient(top, $c1, $c2);
+}
+
+

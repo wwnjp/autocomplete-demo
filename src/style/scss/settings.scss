@@ -1,0 +1,77 @@
+// Variables
+// -----------------
+
+// Colors
+$white: #fdfffc;
+$black: #261c15;
+
+$gray1: #5a5261;
+$gray2: #a0a0a0;
+$gray3: #c9c9c9;
+$gray4: #dfdfdf;
+$gray5: #f9f9f9;
+
+$theme-color1: #247ba0;
+$theme-color2: #68b0ab;
+$theme-color3: #c5d86d;
+
+$theme-color4: #ffc758;
+$theme-color5: #90e7a4;
+$theme-color6: #a5393a;
+
+$theme-red: $theme-color1;
+$theme-blue: $theme-color2;
+$theme-green: $theme-color5;
+$theme-yellow: $theme-color4;
+
+
+$color-change-contrast: 10%;
+
+$url-root: "/style/img";
+
+
+// Animations
+$animation-time: .25s;
+$animation-easing: ease-in-out;
+
+
+// Grid Numbers
+$grid-number-of-columns: 12;
+$grid-width-threshold: 25;
+
+
+
+// Margin/Width Variables
+$base-number: .5em;
+$border-size-default: 1px;
+
+$font-normal: Helvetica, Arial, Sans-serif;
+$font-heading: "Bourbon", "Times New Roman", Times, Serif;
+
+$line-height: 1.25;
+
+$font-size-largest: 400%;
+$font-size-larger: 150%;
+$font-size-normal: 110%;
+$font-size-base: 11pt;
+$font-size-smaller: 90%;
+$font-size-smallest: 85%;
+
+$font-weight-extrabold: 700;
+$font-weight-bolder: 600;
+$font-weight-bold: 500;
+$font-weight-normal: 400;
+$font-weight-light: 100;
+
+$footer-height: 10;
+
+$response-size-desktop: 1000px;
+$response-size-tablet: 800px;
+$response-size-phone: 500px;
+
+
+// Responsive Breakpoints
+$responsive-sizes: (desktop: $response-size-desktop, tablet: $response-size-tablet, phone: $response-size-phone);
+
+
+@import 'lib/base';

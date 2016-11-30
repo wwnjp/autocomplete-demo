@@ -1,0 +1,21 @@
+
+
+
+@mixin responsive($device) {
+	@if map-has-key($responsive-sizes, $device) {
+		@media screen and (max-width: #{map-get($responsive-sizes, $device)}) {
+			@content;
+		}
+	}
+}
+
+
+/*
+usage:
+
+.foo {
+	@include responsive(desktop) {
+		// rules
+	}
+}
+*/

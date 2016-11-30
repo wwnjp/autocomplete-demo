@@ -1,0 +1,460 @@
+input,
+button,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+form {
+  @include vmargin(0);
+}
+
+fieldset {
+  @include margin(0);
+  @include padding(0);
+  @include border-reset();
+  @include responsive(phone) {
+    width: 100%;
+  }
+}
+
+legend {
+  @include small();
+  @include uppercase();
+  @include margin(0);
+  @include vpadding(2);
+  @include color($black);
+  @include bold();
+}
+
+.field-container {
+  @include relative();
+  @include margin-bottom(2);
+  @include padding-right(3);
+
+  label {
+    @include absolute();
+    @include block();
+    @include small();
+    @include uppercase();
+    @include color($black);
+    @include vpadding(2);
+  }
+
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    @include absolute();
+    @include border-reset();
+    @include padding();
+    @include z(1000);
+    background: transparent;
+    width: 100%;
+  }
+
+  input,
+  .select-container,
+  textarea {
+    @include animate(.5);
+    @include block();
+    @include bg-color($white);
+    @include border($gray4, 1);
+    @include drop-shadow(0, 0, $theme-color2);
+    @include font-normal($font-size-normal);
+    @include padding(1.5, 1);
+    width: 100%;
+    line-height: 1.4;
+
+    // Focus
+    &:focus,
+    &.success {
+      outline: none;
+      @include border($theme-color2, 1);
+      @include drop-shadow(1, 0, fade-out($theme-color2, .5));
+    }
+
+    // Disabled
+    &.disabled,
+    &[disabled=disabled] {
+      @include bg-color($gray3);
+      @include opacity();
+      cursor: default;
+    }
+
+    // Fixes displays of spinners for number input fields.
+    &[type="number"] {
+      -moz-appearance: textfield;
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    }
+  }
+
+  .select-container {
+    @include relative;
+    height: 2.5em;
+  }
+
+  label.required:after,
+  label.required-true:after {
+    content: '*';
+    @include bold();
+    @include margin-left(.5);
+  }
+
+  textarea {
+    resize: none;
+  }
+
+  // Radio Buttons Redesign
+  input[type='radio'] {
+    @include text-disappear();
+  }
+
+  input[type='radio'] ~ label {
+    @include animate(.5);
+    @include font-heading($font-size-normal);
+    @include icon('circle');
+    @include padding(0);
+  }
+
+  input[type='radio']:focus ~ label:before {
+    outline: none;
+    @include border($theme-color2);
+    @include drop-shadow(1, 0, fade-out($theme-color2, .5));
+  }
+
+  input[type='radio'] ~ label:before {
+    @include animate(.5);
+    @include bg-color($gray5);
+    @include border($gray3);
+    @include color($gray5);
+    @include round();
+    @include drop-shadow(0, 0, $theme-color2);
+    width: 1.1em;
+    height: 1.1em;
+    line-height: 1.1;
+  }
+
+  input[type='radio']:checked ~ label {
+    @include color($black);
+  }
+
+  input[type='radio']:checked ~ label:before {
+    @include color($black);
+    @include round();
+  }
+
+  input[type="radio"].error ~ label:before {
+    @include bg-color($gray5);
+    @include border($theme-red);
+    @include round();
+    @include color($theme-red);
+  }
+
+  input[type="radio"][disabled] ~ label {
+    @include color($gray2);
+  }
+  input[type="radio"][disabled] ~ label:before {
+    @include bg-color($gray4);
+    @include color($gray4);
+  }
+
+  input[type="checkbox"][disabled]:checked ~ label:before {
+    @include bg-color($gray4);
+    @include color($gray2);
+  }
+
+  // Checkbox Redesign
+  input[type='checkbox'] {
+    @include text-disappear();
+  }
+
+  input[type='checkbox'] ~ label {
+    @include animate(.5);
+    @include font-heading($font-size-normal);
+    @include icon('check');
+  }
+
+  input[type='checkbox'] ~ label:before {
+    @include animate(.5);
+    @include bg-color($gray5);
+    @include border($gray5, 0);
+    @include border-bottom($gray3);
+    @include color($gray5);
+    @include drop-shadow(0, 0, $theme-color2);
+  }
+
+  input[type='checkbox']:checked ~ label {
+    @include color($black);
+    @include icon('check');
+  }
+
+  input[type='checkbox']:checked ~ label:before {
+    @include color($black);
+  }
+
+  input[type='checkbox']:focus ~ label:before {
+    outline: none;
+    // .color(@theme-blue);
+    @include border($theme-color2);
+    @include drop-shadow(1, 0, fade-out($theme-color2, .5));
+  }
+
+  input[type="checkbox"].error ~ label:before {
+    @include bg-color($gray5);
+    @include border($gray5, 0);
+    @include border-bottom($theme-red);
+    @include color($theme-red);
+  }
+
+  input[type="checkbox"].error:focus ~ label:before {
+    @include drop-shadow(1, 0, fade-out($theme-red, .5));
+  }
+
+  input[type="checkbox"][disabled] ~ label:before {
+    @include bg-color($gray4);
+    @include color($gray2);
+  }
+
+  input[type="checkbox"][disabled] ~ label {
+    @include color($gray2);
+  }
+
+
+  // Error highlighting
+  .error {
+    @include bg-color($gray5);
+    @include border($gray5, 0);
+    @include border-bottom($theme-red);
+
+    &:focus {
+      @include border($theme-red, 0);
+      @include drop-shadow(1, 0, fade-out($theme-red, .5));
+    }
+  }
+
+  .warning {
+    @include bg-color($gray5);
+    @include border($theme-yellow);
+
+    &:focus {
+      @include border($theme-yellow, 0);
+      @include drop-shadow(1, 0, fade-out($theme-yellow, .5));
+    }
+  }
+
+  .valid {
+    @include bg-color($gray5);
+    @include border($theme-green);
+
+    &:focus {
+      @include border($theme-green, 0);
+      @include drop-shadow(1, 0, fade-out($theme-green, .5));
+    }
+  }
+
+  .error-field {
+    @include bg-color($gray3);
+    @include color($white);
+    @include small();
+    @include absolute;
+    @include padding();
+    @include triangle('up', 10px, $theme-yellow);
+    @include animate(.5);
+    @include opacity(1);
+    @include drop-shadow(1, .5);
+    @include z(1000);
+    left: -5%;
+    top: 105%;
+
+    a {
+      @include block();
+      @include bold();
+      @include color($black);
+      @include underline();
+      @include vmargin();
+    }
+
+    &.off {
+      top: 95%;
+      @include opacity(0);
+      @include z(-1);
+    }
+  }
+
+  // Error popup
+  .error ~ .error-field {
+    @include bg-color($theme-red);
+  }
+
+  .warning ~ .error-field {
+    @include bg-color($theme-yellow);
+
+  }
+}
+
+.radio-container {
+  @include color($black);
+
+  & > div {
+    @include bg-color($gray5);
+    @include text-center();
+    @include font-normal($font-size-larger);
+  }
+
+  & > div:first-child {
+    @incude border-radius-left(.5);
+  }
+
+  & > div:last-child {
+    @include border-radius-right(.5);
+  }
+}
+
+
+
+.select-container {
+  @include relative();
+  @include icon('arrow-up-down');
+  &:before {
+    @include absolute();
+    @include padding();
+    @include margin(0);
+    @include z(999);
+    right: 0;
+    top: 0;
+    font-size: 125%;
+  }
+}
+
+
+// BUTTONS
+// ------------------------
+@mixin btn($color) {
+  @include bg-color-gradient($color, $color);
+  @include color($white);
+  @include border($color, .5);
+  @include drop-shadow(0, .25, fade-out($black, .9));
+  @include inline-block;
+  @include font-normal($font-size-normal);
+  @include padding(1.5, 4);
+  @include text-center();
+  @include transform(translateZ(0px));
+  @include responsive(print) {
+    @extend .hide;
+  }
+
+  text-decoration: none;
+  cursor: pointer;
+  // @include animate();
+
+
+  &.disabled,
+  &.disabled:hover,
+  &.disabled:focus,
+  &[disabled],
+  &[disabled]:hover,
+  &[disabled]:focus {
+    @include bg-color-gradient($color, $color);
+    @include color($white);
+    @include border($color, .5);
+    @include opacity();
+    @include drop-shadow(0, .25, fade-out($black, .9));
+    cursor: not-allowed;
+  }
+
+  &:hover, &:focus {
+    @include bg-color-gradient($color);
+    @include border(darken($color, ($color-change-contrast * 2)), .5);
+    @include drop-shadow(1, .25, fade-out($black, .75));
+    outline: none;
+    text-decoration: none;
+  }
+
+  &:active {
+  }
+}
+
+a.btn {
+  @include margin-right(2);
+}
+
+.btn-container {
+  // @include vmargin(3);
+  // @include text-center();
+
+  .btn, button, input[type='submit'] {
+    width: 100%;
+  }
+}
+
+.btn.primary {
+  @include btn($theme-color1);
+}
+
+.btn.secondary {
+  @include btn($theme-color2);
+}
+
+input[type=submit],
+button[type=submit],
+.btn-submit {
+  @include btn($theme-color2);
+}
+
+
+
+// Autocomplete
+.autocomplete {
+  .autocomplete-list {
+    @include absolute();
+    @include margin(0, 0);
+    @include padding(0, 0);
+    @include border($gray3, .5);
+    @include bg-color($white);
+    @include drop-shadow(1, .5);
+    @include z(1000);
+
+    list-style-type: none;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height:18em;
+    overflow-y:scroll;
+
+    li {
+      span {
+        @include padding(1, 1);
+        @include block();
+        @include color($gray3);
+        @include font-normal($font-size-normal);
+        @include italic();
+      }
+
+      a {
+        @include block();
+        @include font-normal($font-size-normal);
+        @include color($gray2);
+        @include padding(1, 1);
+        text-decoration: none;
+
+        &:hover {
+          @include color($theme-blue);
+          @include underline();
+        }
+        &.selected {
+          @include bg-color($theme-blue);
+        }
+      }
+    }
+  }
+}
+
+
+

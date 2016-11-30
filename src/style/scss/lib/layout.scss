@@ -1,0 +1,188 @@
+// Main Sections
+// -----------------------
+*, *:before, *:after {
+	box-sizing: border-box;
+}
+
+html {
+	height: 100%;
+	font-size: $font-size-base;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-font-smoothing: antialiased;
+}
+
+:focus {
+	outline: $theme-color2;
+}
+
+
+body {
+	height: 100%;
+	line-height: $line-height;
+	@include relative();
+	@include margin(0);
+	@include padding(0);
+	@include font-normal($font-size-base);
+	@include bg-color($white);
+}
+
+
+
+
+
+main, .main {
+	@include centerize();
+	@include margin-top(20);
+
+	@include responsive(phone) {
+		@include margin-bottom(6)
+	}
+
+	.main-content {
+		@include relative();
+		// @include animate();
+		@include z(100);
+		@include bg-color($white);
+		left:0;
+	}
+}
+
+
+.wrapper {
+	overflow:hidden;
+
+	@include responsive(desktop) {
+		min-height: 100%;
+		height: auto !important;
+		@include margin-bottom($footer-height * -1);
+		@include margin-top(12);
+	}
+
+	&:after {
+		content:'';
+		@include block();
+		@include responsive(desktop) {
+			height: $footer-height;
+		}
+	}
+}
+
+
+
+header {
+	@include border-bottom($gray3);
+	@include bg-color($white);
+	@include drop-shadow();
+	@include padding(1, 2);
+	@include z(900);
+	width: 100%;
+	top: 0;
+}
+
+section {
+	@include centerize();
+	@include vpadding(3);
+}
+
+.aside-text {
+	@include small();
+	@include inline-block(middle);
+	@include color($gray2);
+}
+
+
+footer {
+	@include relative();
+	@include text-white();
+	@include bg-color($theme-color2);
+	@include responsive(phone) {
+		@include text-center()
+	}
+	@include vpadding(4);
+	@include z(50);
+	min-height:$footer-height;
+
+	.copyright {
+		@include small();
+	}
+}
+
+.container {
+	@include centerize();
+	@include vpadding(2);
+}
+
+
+
+
+// Extra Page Layout Elements
+
+
+.card-container {
+	list-style-type: none;
+	@include margin(0);
+	@include padding(0);
+	@include relative();
+
+	.empty-text {
+		@include absolute();
+		top: 2em;
+		left:30%;
+		width:40%;
+		@include text-center();
+		@include padding(2);
+		@include border($theme-color2);
+		// @include drop-shadow();
+		@include bg-color($white);
+		@include z(1000);
+	}
+
+	.card-content {
+		list-style-type: none;
+		@include margin(1);
+		@include padding(2);
+
+		@include bg-color($white);
+		@include font-normal($font-size-smaller);
+		@include color($gray1);
+		@include border($gray4);
+	}
+
+	.card:first-child .card-content {
+		@include margin-left(0);
+	}
+}
+
+
+
+
+.card-container {
+	&.grid-view {
+		@include text-center();
+
+		.card {
+			@extend .grid-3;
+			@include text-center();
+
+			&.inactive {
+				@extend .hide;
+			}
+		}
+	}
+
+	&.list-view {
+		.card {
+			@extend .grid-12;
+
+			&.inactive {
+				@extend .hide;
+			}
+		}
+	}
+}
+
+.card-count {
+	@include vmargin(1);
+	@include text-center();
+}
+

@@ -1,0 +1,84 @@
+@font-face {
+	font-family: 'Bourbon';
+	src: url('fonts/Bourbon-Regular-webfont.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Bourbon';
+	src: url('fonts/Bourbon-RegularOblique-webfont.ttf') format('truetype');
+	font-weight: normal;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Bourbon';
+	src: url('fonts/Bourbon-Lines-webfont.ttf') format('truetype');
+	font-weight: 100;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Bourbon';
+	src: url('fonts/Bourbon-LinesOblique-webfont.ttf') format('truetype');
+	font-weight: 100;
+	font-style: italic;
+}
+
+
+@mixin font-heading($size: $font-size-normal) {
+	font-family: $font-heading;
+	font-weight: $font-weight-normal;
+	font-size: $size;
+}
+
+@mixin font-normal($size: $font-size-normal) {
+	font-family: $font-normal;
+	font-weight: $font-weight-normal;
+	font-size: $size;
+}
+
+
+@mixin heading-style() {
+	@include color($theme-color1);
+	@include font-heading($font-size-largest);
+}
+
+@mixin bold() {
+	font-weight: $font-weight-extrabold;
+}
+
+@mixin italic() {
+	font-style: italic;
+}
+
+@mixin small() {
+	@include font-normal($font-size-smallest);
+}
+
+@mixin big() {
+	@include font-normal($font-size-largest);
+	@include bold();
+}
+
+@mixin underline() {
+	text-decoration: underline;
+}
+
+@mixin uppercase() {
+	text-transform: uppercase;
+}
+
+.text-disappear {
+	position:absolute;
+	left: -9999px;
+}
+
+@mixin text-disappear() {
+	@extend .text-disappear;
+}
+
+@mixin text-indent() {
+	text-indent: -9999px;
+}

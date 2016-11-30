@@ -1,0 +1,105 @@
+
+
+// IMPORTS
+@import 'fonts';
+@import 'mixins';
+@import 'fx';
+@import 'colors';
+@import 'responsive';
+@import 'layout';
+@import 'grid';
+@import 'form';
+
+// Text decorations
+// -----------------------
+
+// Headings
+h1 {
+	@include font-heading($font-size-largest);
+	@include color($theme-color1);
+	@include margin();
+	@include relative();
+	@include italic();
+
+	&:before {
+		@include absolute();
+		@include italic();
+		top: 4px;
+		left: 4px;
+		content: attr(data-header);
+		font-weight: 100;
+	}
+}
+
+h2 {
+	@include font-heading($font-size-larger);
+	@include color($gray2);
+	@include margin-top(0);
+	@include margin-bottom(1.25);
+}
+h3 {
+	@include font-heading($font-size-larger);
+	@include margin-top(0);
+	@include margin-bottom(1.25);
+	line-height: 1.5;
+}
+
+h4 {
+	@include font-heading($font-size-normal);
+	@include margin-top(0);
+	@include margin-bottom(1.25);
+	line-height: 1.5;
+}
+
+hgroup {
+	:last-child {
+		@include margin-bottom(0);
+	}
+}
+
+ul, ol {
+	@include padding-left(3);
+}
+
+
+nav {
+	ul {
+		list-style-type: none;
+		@include padding(0);
+		@include margin(0);
+
+		li {
+			a {
+				@include block();
+				@include padding();
+			}
+		}
+	}
+}
+
+
+// Links
+a {
+	@include color($theme-color2);
+	text-decoration: none;
+
+	&:hover, &:focus {
+		@include color-darken($theme-color2);
+		text-decoration: underline;
+	}
+}
+
+ul, ol {
+	li {
+		line-height: ($line-height * 1.5);
+	}
+}
+
+
+
+img.auto-scale {
+	width:100%;
+	@include padding(2);
+}
+
+

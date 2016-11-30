@@ -1,0 +1,21 @@
+
+
+
+@for $i from 1 through $grid-number-of-columns {
+
+	$perc: ($i * 100 / $grid-number-of-columns);
+
+	.grid-#{$i} {
+		display: inline-block;
+		vertical-align: top;
+		width: ($perc * 1%);
+
+		@if $perc < $grid-width-threshold {
+			@include responsive(phone) {
+				width: 100%;
+			}
+		}
+	}
+}
+
+
